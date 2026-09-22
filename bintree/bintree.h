@@ -1,0 +1,56 @@
+// bintree.h - clases para arboles binarios
+
+// Copyright 2026 Humberto Ortiz Zuazaga
+// Based on BinaryTree class by Pat Morin
+// in https://opendatastructures.org/
+// Released under
+// https://creativecommons.org/licenses/by/2.5/ca/
+
+class BTNode {
+ public:
+  BTNode *left;
+  BTNode *right;
+
+  BTNode() {
+    left = right = nullptr;
+  }
+};
+
+template<class Node>
+class BinaryTree {
+ public:
+  Node *root;
+
+  BinaryTree() {
+    root = nullptr;
+  }
+
+  ~BinaryTree() {
+    clear(root);
+  }
+
+  void clear(Node *u) {
+    if (nullptr == u) return;
+    clear(u->left);
+    clear(u->right);
+    delete(u);
+    return;
+  }
+
+  int size() {
+    return size(root);
+  }
+
+  int size(Node *u) {
+    if (nullptr == u) return 0;
+    int suma = 1;
+    suma += size(u->left);
+    suma += size(u->right);
+    return suma;
+  }
+
+  // see stubs in height.cpp
+  int height();
+  int height(Node *);
+  
+};
