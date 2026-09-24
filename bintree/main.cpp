@@ -13,9 +13,12 @@ int main() {
 
   arbol.root = new BTNode();
   arbol.root->right = new BTNode();
+  arbol.root->right->parent = arbol.root;
   arbol.root->right->right = new BTNode();
+  arbol.root->right->right->parent = arbol.root->right;
   arbol.root->right->right->right = new BTNode();
+  arbol.root->right->right->right->parent = arbol.root->right->right;
 
-  std::cout << arbol.size() << std::endl;
+  std::cout << arbol.size2() << std::endl;
   return 0;
 }
